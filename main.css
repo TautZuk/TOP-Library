@@ -1,0 +1,9 @@
+#booksContainer {
+  display: flex;
+}
+
+.book {
+  margin: 1em;
+  padding: 0.5em;
+  outline: 0.2em blue solid;
+}
