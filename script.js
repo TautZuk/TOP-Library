@@ -53,3 +53,4 @@ function Display() {
   newBook.appendChild(bookReadStatus)
 }
 }
+Display();
