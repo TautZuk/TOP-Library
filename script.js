@@ -24,6 +24,11 @@ function book(title, author, pages, readStatus) {
   this.readStatus = readStatus
   };
 
+const addNewBook = document.querySelector("#addNewBook")
+addNewBook.addEventListener("click", () => {
+  addBookToLibrary()
+})
+
 function addBookToLibrary() {
   let title = prompt("Book title?")
   let author = prompt("Who's the author")
@@ -31,9 +36,8 @@ function addBookToLibrary() {
   let readStatus = prompt("Have you read it?")
   const Book = new book(title, author, pages, readStatus)
   bookLibrary.push(Book)
+  Display();
 };
-
-
 
 function Display() {
   const cellsToRemove = document.querySelectorAll(".book");
