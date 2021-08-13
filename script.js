@@ -5,6 +5,10 @@ const bookAuthor = document.createElement("p")
 const bookPages = document.createElement("p")
 const bookReadStatus = document.createElement("p")
 
+const formTitle = document.getElementById("bookTitle")
+const formAuthor = document.getElementById("bookAuthor")
+const formPages = document.getElementById("bookPages")
+
 let bookLibrary = [ {
   title: "test",
   author: "test1",
@@ -24,19 +28,21 @@ function book(title, author, pages, readStatus) {
   this.readStatus = readStatus
   };
 
-const addNewBook = document.querySelector("#addNewBook")
-addNewBook.addEventListener("click", () => {
-  addBookToLibrary()
-})
-
 function addBookToLibrary() {
-  let title = prompt("Book title?")
-  let author = prompt("Who's the author")
-  let pages = prompt("How many pages?")
-  let readStatus = prompt("Have you read it?")
+  let title = formTitle.value
+  let author = formAuthor.value
+  let pages = formPages.value
+  if(document.getElementById('readStatus').checked){
+    readStatus = "Yes"
+  } else {
+    readStatus = "No"
+  }
   const Book = new book(title, author, pages, readStatus)
   bookLibrary.push(Book)
   Display();
+
+  modal.style.display = "none";
+  
 };
 
 function Display() {
@@ -63,4 +69,25 @@ function Display() {
   newBook.appendChild(bookReadStatus)
 }
 }
+
+const modal = document.getElementById("myModal");
+const addNewBook = document.getElementById("addNewBook");
+const span = document.getElementsByClassName("close")[0];
+
+addNewBook.onclick = function() {
+  modal.style.display = "block";
+  formTitle.value = "";
+  formAuthor.value = "";
+  formPages.value = "";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+} 
 Display();

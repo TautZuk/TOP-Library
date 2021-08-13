@@ -10,6 +10,29 @@
 </head>
 <body>
   <button id="addNewBook">New Book</button>
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="myForm">
+        <form id="formContainer" action="#" onsubmit="addBookToLibrary(); return false">
+          <label for="title">Title</label>
+          <input id="bookTitle" type="text" placeholder="What is book title?" name="title" required>
+
+          <label for="author">Author</label>
+          <input id="bookAuthor" type="text" placeholder="Who is the author?" name="author" required>
+
+          <label for="pagesRead">Number of Pages</label>
+          <input id="bookPages" type="text" placeholder="How many pages in a book?" name="pagesRead" required>
+
+          <label for="readStatus">I read it</label>
+          <input id="readStatus" type="checkbox" name="readStatus">
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  
+  </div>
   <div id="booksContainer"></div>
   
 </body>
