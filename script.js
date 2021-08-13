@@ -33,7 +33,13 @@ function addBookToLibrary() {
   bookLibrary.push(Book)
 };
 
+
+
 function Display() {
+  const cellsToRemove = document.querySelectorAll(".book");
+  for(let j = 0; j < cellsToRemove.length; j++){
+    cellsToRemove[j].remove();
+  };
   for (let i = 0; i < bookLibrary.length; i++) {
     const newBook = document.createElement("div")
     newBook.classList.add("book")
