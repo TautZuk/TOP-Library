@@ -65,8 +65,7 @@ for(let i = 0; i < removeBook.length; i++) {
   const removeBook = document.querySelectorAll("#removebtn")
   const cellsToRemove = document.querySelectorAll(".book");
   removeBook[i].addEventListener("click", function() {
-    alert("works")
-    idNumber = parseInt(cellsToRemove[i].id)
+    let idNumber = parseInt(cellsToRemove[i].id)
     bookLibrary.splice(idNumber, 1)
     Display()
   })
