@@ -5,7 +5,7 @@ const formPages = document.getElementById("bookPages")
 const modal = document.getElementById("myModal");
 const addNewBook = document.getElementById("addNewBook");
 const span = document.getElementsByClassName("close")[0];
-const removeBook = document.querySelectorAll("#removebtn")
+// const removeBook = document.querySelectorAll("#removebtn")
 
 let bookLibrary = [];
 
@@ -28,10 +28,16 @@ function addBookToLibrary() {
   const Book = new book(title, author, pages, readStatus)
   bookLibrary.push(Book)
   Display();
-
   modal.style.display = "none";
-  
 };
+
+book.prototype.changeStatus = function () {
+  if (this.readStatus == "Yes") {
+    this.readStatus = "No"
+  } else {
+    this.readStatus = "Yes"
+  }
+}
 
 function Display() {
   const cellsToRemove = document.querySelectorAll(".book");
@@ -47,6 +53,7 @@ function Display() {
     const bookPages = document.createElement("p")
     const bookReadStatus = document.createElement("p")
     const removeButton = document.createElement("button")
+    const changeStatus = document.createElement("button")
   libraryContainer.appendChild(newBook)
   bookTitle.textContent = "Title: " + bookLibrary[i].title
   newBook.appendChild(bookTitle)
@@ -56,9 +63,13 @@ function Display() {
   newBook.appendChild(bookPages)
   bookReadStatus.textContent = "ReadStatus: " + bookLibrary[i].readStatus
   newBook.appendChild(bookReadStatus)
+  changeStatus.textContent = "Change";
+  changeStatus.setAttribute("id", "changeStatus");
+  newBook.appendChild(changeStatus)
   removeButton.textContent = "Remove Book";
-  removeButton.setAttribute("id", "removebtn")
+  removeButton.setAttribute("id", "removebtn");
   newBook.appendChild(removeButton)
+
 }
 const removeBook = document.querySelectorAll("#removebtn")
 for(let i = 0; i < removeBook.length; i++) {
@@ -67,10 +78,18 @@ for(let i = 0; i < removeBook.length; i++) {
   removeBook[i].addEventListener("click", function() {
     let idNumber = parseInt(cellsToRemove[i].id)
     bookLibrary.splice(idNumber, 1)
-    Display()
+    Display();
+  });
+};
+const changeReadStatus = document.querySelectorAll("#changeStatus")
+for(let i = 0; i < changeReadStatus.length; i++) {
+  changeReadStatus[i].addEventListener("click", () => {
+    bookLibrary[i].changeStatus()
+    Display();
   })
 }
-}
+
+};
 
 
 
@@ -90,4 +109,3 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 } 
-Display();
