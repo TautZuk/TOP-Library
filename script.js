@@ -5,20 +5,9 @@ const formPages = document.getElementById("bookPages")
 const modal = document.getElementById("myModal");
 const addNewBook = document.getElementById("addNewBook");
 const span = document.getElementsByClassName("close")[0];
-const removeBook = document.querySelectorAll("\.removebtn")
-const cellsToRemove = document.querySelectorAll(".book");
+const removeBook = document.querySelectorAll("#removebtn")
 
-let bookLibrary = [ {
-  title: "test",
-  author: "test1",
-  pages: "234",
-  readStatus: "no"},
-  {
-    title: "Harry Potter",
-    author: "Rowling",
-    pages: "256",
-    readStatus: "yes"}
-];
+let bookLibrary = [];
 
 function book(title, author, pages, readStatus) {
   this.title = title
@@ -68,19 +57,23 @@ function Display() {
   bookReadStatus.textContent = "ReadStatus: " + bookLibrary[i].readStatus
   newBook.appendChild(bookReadStatus)
   removeButton.textContent = "Remove Book";
-  removeButton.classList.add("removebtn")
+  removeButton.setAttribute("id", "removebtn")
   newBook.appendChild(removeButton)
 }
-}
-
+const removeBook = document.querySelectorAll("#removebtn")
 for(let i = 0; i < removeBook.length; i++) {
-  removeBook[i].addEventListener("click", () => {
+  const removeBook = document.querySelectorAll("#removebtn")
+  const cellsToRemove = document.querySelectorAll(".book");
+  removeBook[i].addEventListener("click", function() {
     alert("works")
     idNumber = parseInt(cellsToRemove[i].id)
     bookLibrary.splice(idNumber, 1)
     Display()
   })
 }
+}
+
+
 
 addNewBook.onclick = function() {
   modal.style.display = "block";
