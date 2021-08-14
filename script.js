@@ -1,13 +1,12 @@
 const libraryContainer = document.querySelector("#booksContainer")
-const newBook = document.createElement("div")
-const bookTitle = document.createElement("p")
-const bookAuthor = document.createElement("p")
-const bookPages = document.createElement("p")
-const bookReadStatus = document.createElement("p")
-
 const formTitle = document.getElementById("bookTitle")
 const formAuthor = document.getElementById("bookAuthor")
 const formPages = document.getElementById("bookPages")
+const modal = document.getElementById("myModal");
+const addNewBook = document.getElementById("addNewBook");
+const span = document.getElementsByClassName("close")[0];
+const removeBook = document.querySelectorAll("\.removebtn")
+const cellsToRemove = document.querySelectorAll(".book");
 
 let bookLibrary = [ {
   title: "test",
@@ -58,6 +57,7 @@ function Display() {
     const bookAuthor = document.createElement("p")
     const bookPages = document.createElement("p")
     const bookReadStatus = document.createElement("p")
+    const removeButton = document.createElement("button")
   libraryContainer.appendChild(newBook)
   bookTitle.textContent = "Title: " + bookLibrary[i].title
   newBook.appendChild(bookTitle)
@@ -67,12 +67,20 @@ function Display() {
   newBook.appendChild(bookPages)
   bookReadStatus.textContent = "ReadStatus: " + bookLibrary[i].readStatus
   newBook.appendChild(bookReadStatus)
+  removeButton.textContent = "Remove Book";
+  removeButton.classList.add("removebtn")
+  newBook.appendChild(removeButton)
 }
 }
 
-const modal = document.getElementById("myModal");
-const addNewBook = document.getElementById("addNewBook");
-const span = document.getElementsByClassName("close")[0];
+for(let i = 0; i < removeBook.length; i++) {
+  removeBook[i].addEventListener("click", () => {
+    alert("works")
+    idNumber = parseInt(cellsToRemove[i].id)
+    bookLibrary.splice(idNumber, 1)
+    Display()
+  })
+}
 
 addNewBook.onclick = function() {
   modal.style.display = "block";
