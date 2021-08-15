@@ -2,9 +2,10 @@ const libraryContainer = document.querySelector("#booksContainer")
 const formTitle = document.getElementById("bookTitle")
 const formAuthor = document.getElementById("bookAuthor")
 const formPages = document.getElementById("bookPages")
-const modal = document.getElementById("myModal");
+const formCheckbox = document.getElementById("readStatus")
+const popupForm = document.getElementById("myPopupForm");
 const addNewBook = document.getElementById("addNewBook");
-const span = document.getElementsByClassName("close")[0];
+const close = document.getElementsByClassName("close")[0];
 
 let bookLibrary = [];
 
@@ -28,7 +29,7 @@ function addBookToLibrary() {
   bookLibrary.push(Book)
   populateStorage()
   Display();
-  modal.style.display = "none";
+  popupForm.style.display = "none";
 };
 
 book.prototype.changeStatus = function () {
@@ -71,9 +72,9 @@ function Display() {
   newBook.appendChild(removeButton)
 
 }
+
 const removeBook = document.querySelectorAll("#removebtn")
 for(let i = 0; i < removeBook.length; i++) {
-  const removeBook = document.querySelectorAll("#removebtn")
   const cellsToRemove = document.querySelectorAll(".book");
   removeBook[i].addEventListener("click", function() {
     let idNumber = parseInt(cellsToRemove[i].id)
@@ -82,6 +83,7 @@ for(let i = 0; i < removeBook.length; i++) {
     Display();
   });
 };
+
 const changeReadStatus = document.querySelectorAll("#changeStatus")
 for(let i = 0; i < changeReadStatus.length; i++) {
   changeReadStatus[i].addEventListener("click", () => {
@@ -111,19 +113,20 @@ function getFromLocal() {
 }
 
 addNewBook.onclick = function() {
-  modal.style.display = "block";
+  popupForm.style.display = "block";
   formTitle.value = "";
   formAuthor.value = "";
   formPages.value = "";
+  formCheckbox.checked = false;
 }
 
-span.onclick = function() {
-  modal.style.display = "none";
+close.onclick = function() {
+  popupForm.style.display = "none";
 }
 
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (event.target == popupForm) {
+    popupForm.style.display = "none";
   }
 } 
 getFromLocal()

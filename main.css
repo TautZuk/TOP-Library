@@ -15,7 +15,7 @@ body {
   display: flex;
   flex-direction: column;
 }
- .modal {
+.form {
   display: none;
   position: fixed; 
   z-index: 1; 
@@ -29,7 +29,7 @@ body {
 }
 
 
-.modal-content {
+.formContent {
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
