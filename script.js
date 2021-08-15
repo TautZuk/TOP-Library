@@ -5,7 +5,6 @@ const formPages = document.getElementById("bookPages")
 const modal = document.getElementById("myModal");
 const addNewBook = document.getElementById("addNewBook");
 const span = document.getElementsByClassName("close")[0];
-// const removeBook = document.querySelectorAll("#removebtn")
 
 let bookLibrary = [];
 
@@ -99,6 +98,16 @@ function populateStorage() {
 
 function getFromLocal() {
   bookLibrary = JSON.parse(window.localStorage.getItem("Library"))
+  for (let i = 0; i<bookLibrary.length; i++) {
+    bookLibrary[0].__proto__.changeStatus = function () {
+      if (this.readStatus == "Yes") {
+        this.readStatus = "No"
+      } else {
+        this.readStatus = "Yes"
+      }
+    }
+  }
+
 }
 
 addNewBook.onclick = function() {
