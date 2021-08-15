@@ -53,6 +53,8 @@ function Display() {
     const bookAuthor = document.createElement("p")
     const bookPages = document.createElement("p")
     const bookReadStatus = document.createElement("p")
+    const buttonsDiv = document.createElement("div")
+    buttonsDiv.classList.add("buttons")
     const removeButton = document.createElement("button")
     const changeStatus = document.createElement("button")
   libraryContainer.appendChild(newBook)
@@ -64,12 +66,13 @@ function Display() {
   newBook.appendChild(bookPages)
   bookReadStatus.textContent += bookLibrary[i].readStatus
   newBook.appendChild(bookReadStatus)
+  newBook.appendChild(buttonsDiv)
   changeStatus.textContent = "Change Read Status";
   changeStatus.setAttribute("id", "changeStatus");
-  newBook.appendChild(changeStatus)
+  buttonsDiv.appendChild(changeStatus)
   removeButton.textContent = "Remove Book";
   removeButton.setAttribute("id", "removebtn");
-  newBook.appendChild(removeButton)
+  buttonsDiv.appendChild(removeButton)
 
 }
 

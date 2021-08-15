@@ -23,6 +23,11 @@ p:nth-child(2), p:nth-child(3), p:nth-child(4) {
   font-size: 1.2rem;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+
 .book {
 display: flex;
 flex-direction: column;
