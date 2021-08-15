@@ -99,6 +99,7 @@ function populateStorage() {
 }
 
 function getFromLocal() {
+  if (window.localStorage.getItem("Library") !==null){
   bookLibrary = JSON.parse(window.localStorage.getItem("Library"))
   for (let i = 0; i<bookLibrary.length; i++) {
     bookLibrary[0].__proto__.changeStatus = function () {
@@ -109,7 +110,9 @@ function getFromLocal() {
       }
     }
   }
-
+  } else {
+    return
+  }
 }
 
 addNewBook.onclick = function() {
