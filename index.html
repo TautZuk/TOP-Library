@@ -9,7 +9,7 @@
   <title>The Library Project</title>
 </head>
 <body>
-  <button id="addNewBook">New Book</button>
+  
   <div id="myPopupForm" class="form">
     <div class="formContent">
       <span class="close">&times;</span>
@@ -23,17 +23,24 @@
 
           <label for="pagesRead">Number of Pages</label>
           <input id="bookPages" type="number" placeholder="How many pages in a book?" name="pagesRead" required>
-
+          <div>
           <label for="readStatus">I read it</label>
           <input id="readStatus" type="checkbox" name="readStatus">
-
+          </div>
           <button type="submit">Submit</button>
         </form>
       </div>
     </div>
   
   </div>
-  <div id="booksContainer"></div>
+  <div id="top">
+    <h1>Little Local Library</h1>
+    <button id="addNewBook">New Book</button>
+  </div>
+    
+  <div id="booksContainer">
+
+  </div>
   
 </body>
 </html>
