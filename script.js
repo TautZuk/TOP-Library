@@ -50,6 +50,7 @@ function Display() {
     newBook.classList.add("book")
     newBook.setAttribute("id", i)
     const bookTitle = document.createElement("p")
+    const byAuthor = document.createElement("p")
     const bookAuthor = document.createElement("p")
     const bookPages = document.createElement("p")
     const bookReadStatus = document.createElement("p")
@@ -60,8 +61,11 @@ function Display() {
   libraryContainer.appendChild(newBook)
   bookTitle.textContent += bookLibrary[i].title
   newBook.appendChild(bookTitle)
+  byAuthor.textContent = "by"
+  newBook.appendChild(byAuthor)
   bookAuthor.textContent += bookLibrary[i].author
   newBook.appendChild(bookAuthor)
+  
   bookPages.textContent = bookLibrary[i].pages + " pages"
   newBook.appendChild(bookPages)
   bookReadStatus.textContent += bookLibrary[i].readStatus
