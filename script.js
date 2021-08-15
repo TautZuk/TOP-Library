@@ -27,6 +27,7 @@ function addBookToLibrary() {
   }
   const Book = new book(title, author, pages, readStatus)
   bookLibrary.push(Book)
+  populateStorage()
   Display();
   modal.style.display = "none";
 };
@@ -91,7 +92,9 @@ for(let i = 0; i < changeReadStatus.length; i++) {
 
 };
 
-
+function populateStorage() {
+  window.localStorage.setItem('Library', JSON.stringify(bookLibrary))
+}
 
 addNewBook.onclick = function() {
   modal.style.display = "block";
