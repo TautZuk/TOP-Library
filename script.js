@@ -79,6 +79,7 @@ for(let i = 0; i < removeBook.length; i++) {
   removeBook[i].addEventListener("click", function() {
     let idNumber = parseInt(cellsToRemove[i].id)
     bookLibrary.splice(idNumber, 1)
+    populateStorage()
     Display();
   });
 };
@@ -94,6 +95,10 @@ for(let i = 0; i < changeReadStatus.length; i++) {
 
 function populateStorage() {
   window.localStorage.setItem('Library', JSON.stringify(bookLibrary))
+}
+
+function getFromLocal() {
+  bookLibrary = JSON.parse(window.localStorage.getItem("Library"))
 }
 
 addNewBook.onclick = function() {
@@ -112,3 +117,5 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 } 
+getFromLocal()
+Display()
