@@ -1,10 +1,11 @@
 body {
-  background-color: darkgrey;
+  background-color: wheat;
 }
 
 #booksContainer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0.5rem;
 }
 
 #top {
@@ -12,16 +13,24 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
+p:first-child {
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: monospace;
+}
+p:nth-child(2), p:nth-child(3), p:nth-child(4) {
+  text-align: center;
+  font-size: 1.2rem;
+}
 
 .book {
-  display: flex;
-  flex-direction: column;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
-  margin: 1em;
-  padding: 0.5em;
-  outline: 0.2em blue solid;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+background-color: lightgoldenrodyellow;
+border: 0.3rem green solid;
+box-shadow: 5px 10px rgb(34, 36, 31);
+
 }
 #formContainer {
   display: flex;

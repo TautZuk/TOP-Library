@@ -21,9 +21,9 @@ function addBookToLibrary() {
   let author = formAuthor.value
   let pages = formPages.value
   if(document.getElementById('readStatus').checked){
-    readStatus = "Yes"
+    readStatus = "I have read it"
   } else {
-    readStatus = "No"
+    readStatus = "I haven't read it"
   }
   const Book = new book(title, author, pages, readStatus)
   bookLibrary.push(Book)
@@ -33,10 +33,10 @@ function addBookToLibrary() {
 };
 
 book.prototype.changeStatus = function () {
-  if (this.readStatus == "Yes") {
-    this.readStatus = "No"
+  if (this.readStatus == "I have read it") {
+    this.readStatus = "I haven't read it"
   } else {
-    this.readStatus = "Yes"
+    this.readStatus = "I have read it"
   }
 }
 
@@ -56,15 +56,15 @@ function Display() {
     const removeButton = document.createElement("button")
     const changeStatus = document.createElement("button")
   libraryContainer.appendChild(newBook)
-  bookTitle.textContent = "Title: " + bookLibrary[i].title
+  bookTitle.textContent += bookLibrary[i].title
   newBook.appendChild(bookTitle)
-  bookAuthor.textContent = "Author: " + bookLibrary[i].author
+  bookAuthor.textContent += bookLibrary[i].author
   newBook.appendChild(bookAuthor)
-  bookPages.textContent = "Pages: " + bookLibrary[i].pages
+  bookPages.textContent = bookLibrary[i].pages + " pages"
   newBook.appendChild(bookPages)
-  bookReadStatus.textContent = "ReadStatus: " + bookLibrary[i].readStatus
+  bookReadStatus.textContent += bookLibrary[i].readStatus
   newBook.appendChild(bookReadStatus)
-  changeStatus.textContent = "Change";
+  changeStatus.textContent = "Change Read Status";
   changeStatus.setAttribute("id", "changeStatus");
   newBook.appendChild(changeStatus)
   removeButton.textContent = "Remove Book";
@@ -103,10 +103,10 @@ function getFromLocal() {
   bookLibrary = JSON.parse(window.localStorage.getItem("Library"))
   for (let i = 0; i<bookLibrary.length; i++) {
     bookLibrary[0].__proto__.changeStatus = function () {
-      if (this.readStatus == "Yes") {
-        this.readStatus = "No"
+      if (this.readStatus == "I have read it") {
+        this.readStatus = "I haven't read it"
       } else {
-        this.readStatus = "Yes"
+        this.readStatus = "I have read it"
       }
     }
   }
