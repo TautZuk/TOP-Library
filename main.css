@@ -6,6 +6,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 #top {
@@ -28,19 +29,48 @@ p:nth-child(2), p:nth-child(3), p:nth-child(4) {
   flex-direction: column;
 }
 
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 16px;
+}
+
+button#removebtn {
+  background-color: rgb(248, 87, 141);
+}
+button#changeStatus {
+  background-color: lightblue;
+}
+
 .book {
 display: flex;
 flex-direction: column;
 justify-content: space-between;
 background-color: lightgoldenrodyellow;
-border: 0.3rem green solid;
-box-shadow: 5px 10px rgb(34, 36, 31);
+border: 0.3rem rgb(89, 90, 89) solid;
+box-shadow: 5px 10px rgb(0, 0, 0);
 
 }
 #formContainer {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  justify-content: space-evenly;
+  width: max-content;
+  background-color: lightblue;
+  padding: 1rem;
 }
+
+form>label{
+  padding-top: 0.5rem;
+  padding-bottom: 0.1rem;
+}
+
+form>div {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .form {
   display: none;
   position: fixed; 
@@ -56,11 +86,10 @@ box-shadow: 5px 10px rgb(34, 36, 31);
 
 
 .formContent {
-  background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 25%; 
+  width: max-content; 
 }
 
 .close {
